@@ -5,7 +5,7 @@ build-backend = "setuptools.build_meta"
 [project]
 name = "alembic"
 version = "0.1.0"
-description = "Google Vertex AI interface for Terpedia"
+description = "GCP Vertex AI Workbench (notebooks) interface for Terpedia"
 readme = "README.md"
 requires-python = ">=3.10"
 dependencies = [
