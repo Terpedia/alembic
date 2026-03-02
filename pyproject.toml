@@ -1,0 +1,21 @@
+[build-system]
+requires = ["setuptools>=61", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "alembic"
+version = "0.1.0"
+description = "Google Vertex AI interface for Terpedia"
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+    "google-cloud-aiplatform>=1.38.0",
+    "python-dotenv>=1.0.0",
+]
+
+[project.scripts]
+alembic = "alembic.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["alembic*"]

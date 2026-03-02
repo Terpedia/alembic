@@ -1,0 +1,5 @@
+# Google Vertex AI (Gemini, etc.)
+google-cloud-aiplatform>=1.38.0
+
+# Optional: env loading for local dev
+python-dotenv>=1.0.0
