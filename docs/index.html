@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Alembic – Vertex AI Workspace for Terpedia</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="wrap">
+      <a href="https://terpedia.com" class="logo" target="_blank" rel="noopener">Terpedia</a>
+      <span class="product">Alembic</span>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="wrap">
+        <h1>Vertex AI Workspace for Terpedia</h1>
+        <p class="tagline">Set up a Workbench, ask questions, and generate reports with Gemini on Google Cloud.</p>
+      </div>
+    </section>
+
+    <section class="card setup-workspace" id="setup-workspace">
+      <div class="wrap">
+        <h2>Setup & launch a Workspace</h2>
+        <p>Use a Vertex AI Workbench (Jupyter) instance in your GCP project, then run the Alembic client inside it.</p>
+        <ol class="steps">
+          <li>
+            <strong>Create a Workbench instance</strong> (if you don’t have one):
+            <a href="https://console.cloud.google.com/vertex-ai/workbench/instances" target="_blank" rel="noopener">Open Vertex AI Workbench → Instances</a>
+            and click <em>Create new</em>, or run:
+            <pre class="snippet" id="snippet-create"><code>gcloud workbench instances create terpedia-workbench \
+  --project=YOUR_PROJECT_ID \
+  --location=us-central1-b \
+  --vm-image-project=cloud-notebooks-managed \
+  --vm-image-family=workbench-instances \
+  --machine-type=n1-standard-4</code></pre>
+            <button type="button" class="btn btn-secondary copy-btn" data-copy-target="snippet-create">Copy</button>
+          </li>
+          <li>
+            <strong>Open JupyterLab</strong> from the instance row (<em>Open JupyterLab</em>) in the console.
+          </li>
+          <li>
+            <strong>In a JupyterLab terminal</strong>, clone and install Alembic:
+            <pre class="snippet" id="snippet-install"><code>git clone https://github.com/Terpedia/alembic.git
+cd alembic
+pip install -r requirements.txt
+pip install -e .</code></pre>
+            <button type="button" class="btn btn-secondary copy-btn" data-copy-target="snippet-install">Copy</button>
+          </li>
+          <li>
+            Set <code>GOOGLE_CLOUD_PROJECT</code> in the notebook (or in a <code>.env</code> file in <code>alembic/</code>), then use the client or CLI (see below).
+          </li>
+        </ol>
+        <p class="link-row">
+          <a href="https://github.com/Terpedia/alembic" class="btn btn-primary" target="_blank" rel="noopener">View repo</a>
+          <a href="https://console.cloud.google.com/vertex-ai/workbench/instances" class="btn btn-secondary" target="_blank" rel="noopener">Open Workbench console</a>
+        </p>
+      </div>
+    </section>
+
+    <section class="card use-workspace" id="use-workspace">
+      <div class="wrap">
+        <h2>Ask questions & write reports</h2>
+        <p>Enter a question or report topic. You can run the generated command in your Workbench terminal, or (if configured) use an API endpoint.</p>
+        <div class="prompt-form">
+          <label for="prompt-input">Question or report topic</label>
+          <textarea id="prompt-input" rows="4" placeholder="e.g. Summarize the main terpenes in cannabis and their effects, or: Write a short report on CBD and anxiety."></textarea>
+          <div class="form-actions">
+            <button type="button" class="btn btn-primary" id="btn-get-command">Get command for Workbench</button>
+            <button type="button" class="btn btn-secondary" id="btn-report-preset">Use "Write a report" preset</button>
+          </div>
+        </div>
+        <div class="output-panel hidden" id="output-panel">
+          <p class="output-label">Run this in your Workbench terminal (or in a notebook cell with <code>! python -m alembic "…"</code>):</p>
+          <pre class="snippet" id="snippet-command"><code id="command-code"></code></pre>
+          <button type="button" class="btn btn-secondary copy-btn" data-copy-target="snippet-command">Copy command</button>
+        </div>
+        <div class="output-panel hidden" id="api-panel">
+          <p class="output-label">Response (from API):</p>
+          <pre class="snippet" id="api-response"></pre>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <p><a href="https://github.com/Terpedia/alembic">Terpedia/alembic</a> – Vertex AI Workspace &amp; Gemini client for Terpedia.</p>
+    </div>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,278 @@
+/* Alembic – Terpedia GitHub Pages */
+
+:root {
+  --bg: #0d0f12;
+  --bg-card: #15181d;
+  --text: #e6e9ef;
+  --text-muted: #8b92a0;
+  --accent: #6bcf7f;
+  --accent-dim: #4a9f5c;
+  --border: #252a32;
+  --code-bg: #1c1f26;
+  --font-sans: "DM Sans", system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, monospace;
+  --radius: 10px;
+  --space: 1.25rem;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-sans);
+  font-size: 1rem;
+  line-height: 1.6;
+  color: var(--text);
+  background: var(--bg);
+  min-height: 100vh;
+}
+
+.wrap {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 0 var(--space);
+}
+
+/* Header */
+.site-header {
+  padding: var(--space) 0;
+  border-bottom: 1px solid var(--border);
+}
+
+.site-header .wrap {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.site-header .logo {
+  color: var(--accent);
+  font-weight: 600;
+  text-decoration: none;
+  font-size: 1.125rem;
+}
+
+.site-header .logo:hover {
+  color: var(--accent-dim);
+}
+
+.site-header .product {
+  color: var(--text-muted);
+  font-size: 0.9rem;
+}
+
+/* Hero */
+.hero {
+  padding: 3rem 0;
+}
+
+.hero h1 {
+  margin: 0 0 0.5rem;
+  font-size: clamp(1.75rem, 4vw, 2.25rem);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+.hero .tagline {
+  margin: 0;
+  color: var(--text-muted);
+  font-size: 1.1rem;
+}
+
+/* Cards */
+.card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 2rem 0;
+  margin-bottom: 2rem;
+}
+
+.card h2 {
+  margin: 0 0 0.5rem;
+  font-size: 1.35rem;
+  font-weight: 600;
+}
+
+.card p {
+  margin: 0 0 1rem;
+  color: var(--text-muted);
+}
+
+.card p:last-of-type {
+  margin-bottom: 0;
+}
+
+.card a {
+  color: var(--accent);
+  text-decoration: none;
+}
+
+.card a:hover {
+  text-decoration: underline;
+}
+
+/* Steps */
+.steps {
+  margin: 1.5rem 0;
+  padding-left: 1.5rem;
+}
+
+.steps li {
+  margin-bottom: 1.5rem;
+}
+
+.steps li:last-child {
+  margin-bottom: 0;
+}
+
+.steps strong {
+  color: var(--text);
+}
+
+/* Snippets */
+.snippet {
+  position: relative;
+  margin: 0.75rem 0 0.5rem;
+  padding: 1rem 1.25rem;
+  background: var(--code-bg);
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  overflow-x: auto;
+}
+
+.snippet code {
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  color: var(--text);
+  white-space: pre;
+}
+
+.snippet + .copy-btn {
+  margin-top: 0.25rem;
+}
+
+/* Buttons */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.6rem 1.1rem;
+  font-family: var(--font-sans);
+  font-size: 0.9rem;
+  font-weight: 500;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  text-decoration: none;
+  transition: background 0.15s, color 0.15s;
+}
+
+.btn-primary {
+  background: var(--accent);
+  color: var(--bg);
+}
+
+.btn-primary:hover {
+  background: var(--accent-dim);
+}
+
+.btn-secondary {
+  background: var(--border);
+  color: var(--text);
+}
+
+.btn-secondary:hover {
+  background: #2d333d;
+}
+
+.copy-btn {
+  margin-right: 0.5rem;
+}
+
+.link-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: 1.5rem !important;
+}
+
+/* Form */
+.prompt-form label {
+  display: block;
+  font-weight: 500;
+  margin-bottom: 0.5rem;
+  color: var(--text);
+}
+
+.prompt-form textarea {
+  width: 100%;
+  padding: 1rem;
+  font-family: var(--font-sans);
+  font-size: 1rem;
+  line-height: 1.5;
+  color: var(--text);
+  background: var(--code-bg);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  resize: vertical;
+  min-height: 100px;
+}
+
+.prompt-form textarea::placeholder {
+  color: var(--text-muted);
+}
+
+.prompt-form textarea:focus {
+  outline: none;
+  border-color: var(--accent);
+}
+
+.form-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: 1rem;
+}
+
+.output-panel {
+  margin-top: 1.5rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--border);
+}
+
+.output-panel.hidden {
+  display: none;
+}
+
+.output-label {
+  margin: 0 0 0.5rem !important;
+  font-size: 0.9rem;
+  color: var(--text-muted);
+}
+
+/* Footer */
+.site-footer {
+  padding: 2rem 0;
+  border-top: 1px solid var(--border);
+  margin-top: 2rem;
+}
+
+.site-footer p {
+  margin: 0;
+  font-size: 0.9rem;
+  color: var(--text-muted);
+}
+
+.site-footer a {
+  color: var(--text-muted);
+  text-decoration: none;
+}
+
+.site-footer a:hover {
+  color: var(--accent);
+}

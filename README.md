@@ -6,6 +6,7 @@ Use **GCP Vertex AI Workbench (Vertex notebooks)** for [Terpedia](https://terped
 
 - **`alembic`** – Python package to call Vertex AI (Gemini, etc.) from code or from inside a Vertex notebook.
 - **`notebooks/`** – Starter notebooks and instructions for running analyses in Vertex AI Workbench.
+- **`docs/`** – [GitHub Pages](https://terpedia.github.io/alembic/) site: setup & launch a Workspace, get CLI commands for questions/reports.
 
 ## Prerequisites
 
@@ -17,18 +18,18 @@ Use **GCP Vertex AI Workbench (Vertex notebooks)** for [Terpedia](https://terped
 ## Using Vertex notebooks (Workbench)
 
 1. **Create a notebook instance**  
-   - [Console](https://console.cloud.google.com/vertex-ai/workbench): Vertex AI → Workbench → **Create instance**.  
-   - Or with gcloud (set `PROJECT` and `LOCATION`, e.g. `us-central1`):
+   - [Console](https://console.cloud.google.com/vertex-ai/workbench/instances): Vertex AI → Workbench → **Create new**.  
+   - Or with gcloud (use **Vertex AI Workbench**; replace `YOUR_PROJECT_ID` and zone if needed):
      ```bash
-     gcloud notebooks instances create terpedia-notebook \
-       --project=$PROJECT \
-       --location=$LOCATION \
-       --machine-type=n1-standard-4 \
-       --vm-image-project=deeplearning-platform-release \
-       --vm-image-family=common-cpu-notebooks-debian-12
+     gcloud workbench instances create terpedia-workbench \
+       --project=YOUR_PROJECT_ID \
+       --location=us-central1-b \
+       --vm-image-project=cloud-notebooks-managed \
+       --vm-image-family=workbench-instances \
+       --machine-type=n1-standard-4
      ```
-2. **Open Jupyter**  
-   In the console, click the instance → **Open JupyterLab** (or the link from the gcloud output).
+2. **Open JupyterLab**  
+   In the console, click the instance → **Open JupyterLab**.
 3. **Use this repo in the notebook**  
    In a terminal inside JupyterLab:
    ```bash
@@ -89,7 +90,17 @@ print(response)
 |----------|-------------|
 | `GOOGLE_CLOUD_PROJECT` | GCP project ID (required) |
 | `VERTEX_LOCATION` | Vertex region (default: `us-central1`) |
-| `VERTEX_MODEL` | Model ID (default: `gemini-1.5-flash`) |
+| `VERTEX_MODEL` | Model ID (default: `gemini-2.0-flash-001`) |
+| `VERTEX_API_KEY` | Optional Vertex API key (when not using ADC) |
+
+## GitHub Pages
+
+The **docs/** folder is a static site for [Terpedia/alembic GitHub Pages](https://terpedia.github.io/alembic/). It provides:
+
+- **Setup & launch a Workspace** – Steps and gcloud snippet to create a Vertex AI Workbench instance and open JupyterLab.
+- **Ask questions & write reports** – A form that turns your prompt into a `python -m alembic "…"` command to copy and run in your Workbench.
+
+To enable Pages: repo **Settings → Pages → Build and deployment → Source**: deploy from branch **main**, folder **/docs**. Save. The site will be at `https://terpedia.github.io/alembic/`.
 
 ## License
 
